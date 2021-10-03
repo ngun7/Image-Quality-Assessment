@@ -12,7 +12,7 @@ from timebudget import timebudget
 from multiprocessing import Pool
 
 
-
+# Laplacian and Sobel filter functions to extract max & variance values
 def varMaxLaplacian(image):
     return cv2.Laplacian(image, cv2.CV_64F).var(),cv2.Laplacian(image, cv2.CV_64F).max()
 def varMaxSobel(image,kernel = 5):
