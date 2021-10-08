@@ -1,5 +1,4 @@
 from glob import glob
-from cv2 import data
 from numpy.random import choice
 import streamlit as st
 import joblib
@@ -34,7 +33,6 @@ model = joblib.load("model.joblib")
 
 def predict(img_file):
     img = Image.open(img_file)
-    st.image(img, caption="Uploaded image", use_column_width=True)
     new_img = np.asarray(img.convert('RGB'))
     gray = cv2.cvtColor(new_img,1)
 
@@ -45,6 +43,7 @@ def predict(img_file):
     columns=["Laplacian maximum", "Laplacian variance", "Sobel maximum", "Sobel Variance"]
     features = [lapmax, lapvar, sobmax, sobvar]
     res_dict = dict(zip(columns, features))
+
     #Label and score prediction based on pre-trained random forest model
     class_label = ["Blur" if model.predict([features])==1 else "Clear"]
     blur_score = model.predict_proba([features])
@@ -52,6 +51,10 @@ def predict(img_file):
     # Label and Score formatting
     class_label = ''.join(class_label)
     blur_score = round(blur_score[0][1],2)
+
+    #Display image
+    st.image(img, caption="Uploaded image", use_column_width=True)
+    
     return class_label, blur_score, res_dict
 
 if uploaded_file is not None:
