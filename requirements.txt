@@ -7,4 +7,3 @@ scipy==1.7.1
 timebudget==0.7.1
 joblib==1.0.1
 Pillow==8.3.2
-skimage==0.0
