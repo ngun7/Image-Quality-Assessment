@@ -5,11 +5,7 @@ import matplotlib.pyplot as plt
 import os
 import glob
 from PIL import Image, ImageFilter
-from skimage.io import imshow, imread
-from skimage.color import rgb2yuv, rgb2hsv, rgb2gray, yuv2rgb, hsv2rgb
-from scipy.signal import convolve2d
-from timebudget import timebudget
-from multiprocessing import Pool
+
 
 
 # Laplacian and Sobel filter functions to extract max & variance values
