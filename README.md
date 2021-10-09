@@ -1,9 +1,8 @@
 # Image Blur Detection
  This project aims to determine if an image is blurred or not with a blurriness score
  
- You can play around here:
- https://share.streamlit.io/nikhilgunti/image-blur-detection/main/streamlit.py
-
+ **You can play around here:
+ https://share.streamlit.io/nikhilgunti/image-blur-detection/main/streamlit.py**
  
  **Data:**
 20k clear images and 100k blurred images(generated synthetically using input clear images through Simple, Box and Gaussian blur functions)
