@@ -2,23 +2,20 @@ from glob import glob
 from numpy.random import choice
 import streamlit as st
 import joblib
+from PIL import Image, ImageStat
 import cv2
+import math
 import os
 import glob
 from matplotlib.pyplot import cla
-import pandas as pd
 import numpy as np
-from blur_functions import varMaxLaplacian, varMaxSobel
-import argparse
-from PIL import Image
+from src.blur_functions import varMaxLaplacian, varMaxSobel
 
 
 st.title("Image Blur Detection")
 
 st.markdown("### 🎲 The Application")
 st.markdown("This application is to detect whether an input image fed is blur or not with a blurriness score")
-
-
 menu = ["Select image from the below list", "Upload From Computer"]
 choice = st.sidebar.selectbox("Menu", menu)
 
@@ -32,6 +29,14 @@ model = joblib.load("model.joblib")
 
 
 def predict(img_file):
+    """[Predicting whether an image is blur or not]
+
+    Args:
+        img_file ([path]): [image file path] 
+
+    Returns:
+        [string, float]: [Label for the image and also its score]] 
+    """    
     img = Image.open(img_file)
     new_img = np.asarray(img.convert('RGB'))
     gray = cv2.cvtColor(new_img,1)
