@@ -29,6 +29,18 @@ def dtype_limits(image, clip_negative=False):
     return imin, imax
 
 def contrast_score(image, lower_percentile=1, upper_percentile=99, method='linear'):
+    """[Calculate the contrast score of an image]
+
+    Args:
+        image ([path]): [path of the image]
+        lower_percentile (int, optional): [Disregard values below this percentile when computing image contrast]. Defaults to 1.
+        upper_percentile (int, optional): [Disregard values above this percentile when computing image contrast]. Defaults to 99.
+        method (str, optional): [The contrast determination method.  Right now the only available
+        option is "linear"]. Defaults to 'linear'.
+
+    Returns:
+        [float]: [score in the range [0, 1]]
+    """    
     image = np.asanyarray(image)
     if image.dtype == bool:
         return not ((image.max() == 1) and (image.min() == 0))
@@ -46,25 +58,8 @@ def contrast_score(image, lower_percentile=1, upper_percentile=99, method='linea
     return ratio
 
 
-def main():
-    parser = argparse.ArgumentParser(description='Calculate brightness of an image')
-    # Adding argument to input image path
-    parser.add_argument('--image', type=str,required=True)
-    args = parser.parse_args()
-    img_path = os.path.join(os.getcwd(), "Images", args.image)
-    
-    while os.path.isfile(img_path) is True:
-        img = cv2.imread(img_path)
-        img_grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img_label = ["Low Contrast" if is_low_contrast(img_grey, fraction_threshold=0.5) else "High Contrast"]
-        print(img_label)
-        contrast = round(img_grey.std()/100,3)
-        return img_label, contrast
-
-
-
 if __name__=='__main__':
-    parser = argparse.ArgumentParser(description='Calculate brightness of an image')
+    parser = argparse.ArgumentParser(description='Calculate contrast score of an image')
     # Adding argument to input image path
     parser.add_argument('--image', type=str,required=True)
     args = parser.parse_args()

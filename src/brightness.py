@@ -5,7 +5,13 @@ import math
 import argparse
 import os
 
-def main():
+def brightness_score():
+    """[Get the brightness score of the image]
+
+    Returns:
+        [float]: [score in range 0-1]
+    """    
+
     parser = argparse.ArgumentParser(description='Calculate brightness of an image')
     # Adding argument to input image path
     parser.add_argument('--image', type=str,required=True)
@@ -26,4 +32,4 @@ def main():
 
 
 if __name__=='__main__':
-    main()
+    brightness_score()
