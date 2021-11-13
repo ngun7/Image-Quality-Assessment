@@ -1,5 +1,8 @@
-# Image Blur Detection
- This project aims to determine if an image is blurred or not with a blurriness score
+# Image Quality Assessment
+ This project aims to determine if an image is blurred or not with a blurriness score along with brightness & contrast score. This project is specifically customized for automotive industry.
+ 
+ Techinical quality assessment : Low level degradations such as noise, blur, compression artifacts <br> 
+ Aesthetic quality assessment: semantic level characteristics such as emotions and beauty in images
  
  **You can play around here:
  https://share.streamlit.io/nikhilgunti/image-blur-detection/main/streamlit.py**
@@ -7,7 +10,9 @@
  **Data:**
 20k clear images and 100k blurred images(generated synthetically using input clear images through Simple, Box and Gaussian blur functions)
 
-**Label:** Label '0' as _Clear_ and Label '1' as _Blur_
+**Label:** Label '0' as _Not Blur_ and Label '1' as _Blur_
+
+**Scores:** Blurriness, Brightness, Contrast
 
 **Features:** Maximum and Variance values of Laplacian \& Sobel filters
 
