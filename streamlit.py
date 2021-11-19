@@ -6,7 +6,6 @@ from PIL import Image, ImageStat
 import cv2
 import math
 import os
-import glob
 from matplotlib.pyplot import cla
 import numpy as np
 from src.blur_functions import varMaxLaplacian, varMaxSobel
